@@ -44,17 +44,19 @@ df = df.iloc[:, :11]
 # Importing the variables only ONCE
 
 if 'model' not in st.session_state:
-    st.session_state.model = api.load('word2vec-google-news-300')
-model = st.session_state.model
+    with st.spinner("# Loading api .."):
+        st.session_state.model = api.load('word2vec-google-news-300')
+        
 if 'stopwords' not in st.session_state:
-    download('stopwords')  # Download stopwords list.
-    stop_words = corpus.stopwords.words('english')
-    portuguese = corpus.stopwords.words('portuguese')
-    stop_words.extend(portuguese)
-    st.session_state.stopwords = stop_words
+    with st.spinner('loadig stopwords ...'):
+        download('stopwords')  # Download stopwords list.
+        stop_words = corpus.stopwords.words('english')
+        portuguese = corpus.stopwords.words('portuguese')
+        stop_words.extend(portuguese)
+        st.session_state.stopwords = stop_words
     
 stop_words = st.session_state.stopwords
-
+model = st.session_state.model
 
 
 
