@@ -1,5 +1,5 @@
 gensim==4.3.0
-nltk==3.8.1
+nltk==3.9
 streamlit==1.16.0
 pandas==1.5.2
 openpyxl==3.0.10
